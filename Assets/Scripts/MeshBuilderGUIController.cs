@@ -29,6 +29,8 @@ public class MeshBuilderGUIController : MonoBehaviour
     /// <summary>
     /// If set, grid indices will stop meshing when they have been sufficiently observed.
     /// </summary>
+    public int m_carBuildScene;
+    public int m_mainMapScene;
     public bool m_enableSelectiveMeshing;
 
     /// <summary>
@@ -84,13 +86,15 @@ public class MeshBuilderGUIController : MonoBehaviour
 
         if (GUI.Button(new Rect(Screen.width - 160, 220, 140, 80), "<size=30>Export</size>"))
         {
-            string filepath = "/sdcard/DemoMesh.obj";
+            string filepath = "/sdcard/MapMesh.obj";
             m_dynamicMesh.ExportMeshToObj(filepath);
             Debug.Log(filepath);
 
             /*
                 switch scene to car design scene here
             */
+
+    		Application.LoadLevel(m_mainMapScene);
         }
     }
 
