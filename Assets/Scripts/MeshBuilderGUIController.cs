@@ -86,7 +86,7 @@ public class MeshBuilderGUIController : MonoBehaviour
 
         if (GUI.Button(new Rect(Screen.width - 160, 220, 140, 80), "<size=30>Export</size>"))
         {
-            string filepath = "/sdcard/MapMesh.obj";
+            string filepath = "/sdcard/CourierDropMap.obj";
             m_dynamicMesh.ExportMeshToObj(filepath);
             Debug.Log(filepath);
 

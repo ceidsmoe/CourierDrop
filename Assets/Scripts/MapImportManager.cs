@@ -6,7 +6,7 @@ public class MapImportManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		string filepath = "/sdcard/MapMesh.obj";
+		string filepath = "/sdcard/CourierDropMap.obj";
 		Mesh holderMesh = new Mesh();
 		ObjImporter mapImporter = new ObjImporter();
 		holderMesh = mapImporter.ImportFile(filepath);
