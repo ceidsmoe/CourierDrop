@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour {
     public float speed;
 
     private Rigidbody rb;
+    private Vector2 touchOrigin = -Vector2.one;
+    private int health = 100;
+
 
     void Start ()
     {
@@ -28,7 +31,7 @@ public class PlayerController : MonoBehaviour {
     void OnTriggerEnter(Collider other) 
     {
 
-        if (other.gameObject.CompareTag("Pick Up"))
+        if (other.gameObject.CompareTag("Goal"))
         {
         }
     }
