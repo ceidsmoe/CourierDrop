@@ -82,6 +82,12 @@ public class MeshBuilderGUIController : MonoBehaviour
         {
             m_isEnabled = !m_isEnabled;
             m_tangoApplication.Set3DReconstructionEnabled(m_isEnabled);
+
+            GameObject smode = GameObject.FindGameObjectsWithTag("ScanMode")[0];
+            smode.active = false;
+
+            GameObject pmode = GameObject.FindGameObjectsWithTag("PlayMode")[0];
+            pmode.active = true;
         }
 
         if (GUI.Button(new Rect(Screen.width - 160, 220, 140, 80), "<size=30>Export</size>"))

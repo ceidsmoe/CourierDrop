@@ -8,9 +8,8 @@ public class PlayerController : MonoBehaviour {
     public float speed;
 
     private Rigidbody rb;
-    private Vector2 touchOrigin = -Vector2.one;
     private int health = 100;
-
+    public VirtualJoystick joystick;
 
     void Start ()
     {
@@ -20,8 +19,8 @@ public class PlayerController : MonoBehaviour {
     void FixedUpdate ()
     {
 
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        float moveHorizontal = joystick.Horizontal(); //Input.GetAxis("Horizontal");
+        float moveVertical = joystick.Vertical(); //Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 
@@ -33,6 +32,7 @@ public class PlayerController : MonoBehaviour {
 
         if (other.gameObject.CompareTag("Goal"))
         {
+            
         }
     }
 }
