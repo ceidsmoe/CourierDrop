@@ -39,6 +39,8 @@ public class MeshOcclusionUIController : MonoBehaviour, ITangoLifecycle, ITangoP
     [Header("Marker Objects")]
     public GameObject m_markerObject;
 
+    public GameObject m_mapObjectsContainer;
+
     /// <summary>
     /// The canvas panel used during mesh construction.
     /// </summary>
@@ -400,6 +402,7 @@ public class MeshOcclusionUIController : MonoBehaviour, ITangoLifecycle, ITangoP
         // Enable objects needed to use Area Description and mesh for occlusion.
         m_arPoseController.gameObject.SetActive(true);
         m_arPoseController.m_useAreaDescriptionPose = true;
+        m_mapObjectsContainer.gameObject.SetActive(true);
 
         // Disable unused components in tango application.
         m_tangoApplication.m_areaDescriptionLearningMode = false;
@@ -429,6 +432,7 @@ public class MeshOcclusionUIController : MonoBehaviour, ITangoLifecycle, ITangoP
 
         // Load Area Description file.
         m_curAreaDescription = AreaDescription.ForUUID(m_savedUUID);
+
 
         m_tangoApplication.Startup(m_curAreaDescription);
     }
@@ -474,6 +478,8 @@ public class MeshOcclusionUIController : MonoBehaviour, ITangoLifecycle, ITangoP
         StartCoroutine(_DoSaveAreaDescriptionAndMesh());
     }
     
+
+    /*
     /// <summary>
     /// Set the marker object at the raycast location when the user has interacted with the image overlay.
     /// </summary>
@@ -490,7 +496,7 @@ public class MeshOcclusionUIController : MonoBehaviour, ITangoLifecycle, ITangoP
             m_markerObject.transform.position = hit.point;
             m_markerObject.transform.up = hit.normal;
         }
-    }
+    }*/
 
     /// <summary>
     /// Show the mesh as visible.
