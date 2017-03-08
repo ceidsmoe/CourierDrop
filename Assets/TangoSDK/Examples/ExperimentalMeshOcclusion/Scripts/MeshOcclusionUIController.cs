@@ -430,6 +430,9 @@ public class MeshOcclusionUIController : MonoBehaviour, ITangoLifecycle, ITangoP
         m_meshFromFile.AddComponent<MeshCollider>();
         m_meshFromFile.layer = LayerMask.NameToLayer("Occlusion");
 
+        Vector3 bottomPoint = mr.bounds.min;
+        m_mapObjectsContainer.gameObject.transform.GetChild(0).position = bottomPoint;
+
         // Load Area Description file.
         m_curAreaDescription = AreaDescription.ForUUID(m_savedUUID);
 
