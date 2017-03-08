@@ -16,8 +16,10 @@ public class Timer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (finished)
+		if (finished) {
+			waitThenRefresh();
             return;
+		}
 
 		float currentTime = Time.time - startTime;
 
@@ -31,5 +33,13 @@ public class Timer : MonoBehaviour {
     {
         timerText.color = Color.yellow;
         finished = true;
+    }
+
+    IEnumerator waitThenRefresh()
+    {
+
+    	yield return new WaitForSeconds (2f);
+
+    	Application.LoadLevel(Application.loadedLevel);
     }
 }
