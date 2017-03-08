@@ -377,6 +377,17 @@ public class MeshOcclusionUIController : MonoBehaviour, ITangoLifecycle, ITangoP
         }
     }
 
+
+    /// <summary>
+    /// From button press: start the car building progress.
+    /// 
+    /// Allow the user to customize a new car they can then use to play the game.
+    /// </summary>
+    public void Button_CreateCarGameObject()
+    {
+
+    }
+
     /// <summary>
     /// From button press: start the game by loading the mesh and the Area Description.
     /// 
