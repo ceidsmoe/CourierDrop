@@ -7,6 +7,7 @@ public class Timer : MonoBehaviour {
 
 	public Text timerText;
 	private float startTime;
+	private bool finished = false;
 
 	// Use this for initialization
 	void Start () {
@@ -15,6 +16,9 @@ public class Timer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (finished)
+            return;
+
 		float currentTime = Time.time - startTime;
 
 		string minutes = ((int) currentTime / 60).ToString();
@@ -22,4 +26,10 @@ public class Timer : MonoBehaviour {
 
 		timerText.text = minutes + ":" + seconds;
 	}
+
+	void Finished ()
+    {
+        timerText.color = Color.yellow;
+        finished = true;
+    }
 }
