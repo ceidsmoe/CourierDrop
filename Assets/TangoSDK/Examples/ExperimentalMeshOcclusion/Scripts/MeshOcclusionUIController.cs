@@ -377,6 +377,17 @@ public class MeshOcclusionUIController : MonoBehaviour, ITangoLifecycle, ITangoP
         }
     }
 
+
+    /// <summary>
+    /// From button press: start the car building progress.
+    /// 
+    /// Allow the user to customize a new car they can then use to play the game.
+    /// </summary>
+    public void Button_CreateCarGameObject()
+    {
+
+    }
+
     /// <summary>
     /// From button press: start the game by loading the mesh and the Area Description.
     /// 
@@ -429,6 +440,9 @@ public class MeshOcclusionUIController : MonoBehaviour, ITangoLifecycle, ITangoP
         mr.material = m_depthMaskMat;
         m_meshFromFile.AddComponent<MeshCollider>();
         m_meshFromFile.layer = LayerMask.NameToLayer("Occlusion");
+
+        Vector3 bottomPoint = mr.bounds.min;
+        m_mapObjectsContainer.gameObject.transform.GetChild(0).position = bottomPoint;
 
         // Load Area Description file.
         m_curAreaDescription = AreaDescription.ForUUID(m_savedUUID);

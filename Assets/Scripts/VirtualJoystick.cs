@@ -19,15 +19,13 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler,IPointerUpHandler,IPo
     public virtual void OnDrag(PointerEventData ped)
     {
         Vector2 pos;
-        Debug.Log("blah");
         if(RectTransformUtility.ScreenPointToLocalPointInRectangle(bgImg.rectTransform
         , ped.position
         , ped.pressEventCamera
         , out pos)) 
         {
-            /*pos.x = (pos.x / bgImg.rectTransform.sizeDelta.x);
-            pos.y = (pos.y / bgImg.rectTransform.sizeDelta.y);*/
-
+            pos.x = (pos.x / bgImg.rectTransform.sizeDelta.x);
+            pos.y = (pos.y / bgImg.rectTransform.sizeDelta.y);
 
 
             inputVector = new Vector3 (pos.x*2 + 1,0,pos.y*2 - 1);
