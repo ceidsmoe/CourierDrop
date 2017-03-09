@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Wheel_Logic : MonoBehaviour {
 
-    //See rotor logic script first for the uncommented parts
 
     WheelCollider wheelCollider;
 
@@ -17,7 +16,7 @@ public class Wheel_Logic : MonoBehaviour {
     float targetFloat;
     float curFloat;
 
-    Transform cam; //Reference to our camera's transform
+    Transform cam;
 
 	void Start () 
     {
@@ -30,29 +29,22 @@ public class Wheel_Logic : MonoBehaviour {
     {
         SimulateAxis();
 
-        //Because the wheels could be of the opposite side
-        //we want the float we are going to apply to their torque
-        //to be relevant to where the camera is looking towards
         if(CompareCameraAngle())
         {
-            //..so if it's the opposite of the camera, then simply convert it to a negative number
             curFloat = -curFloat;
         }
 
         visualModel.Rotate(0, curFloat * force, 0);
 
-        //apply the motor torque to the wheel collider
         wheelCollider.motorTorque = force * curFloat;
 	}
-
-    //Returns if true if the transform is looking the opposite way from the camera 
+		
     bool CompareCameraAngle()
     {
         bool retVal = false;
 
-        //Get the two comparing vectors
         Vector3 camForward = cam.forward;
-        camForward.y = 0; //and level them, so that we are comparing them on 2 axis
+        camForward.y = 0;
 
         Vector3 transForward = transform.forward;
         transForward.y = 0;
