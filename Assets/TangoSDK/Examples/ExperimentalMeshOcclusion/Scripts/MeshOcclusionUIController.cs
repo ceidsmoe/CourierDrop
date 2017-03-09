@@ -515,6 +515,18 @@ public class MeshOcclusionUIController : MonoBehaviour, ITangoLifecycle, ITangoP
     /// <summary>
     /// Show the mesh as visible.
     /// </summary>
+    public void Button_ResetPlayer()
+    {
+        GameObject player = GameObject.Find("Player");
+        Rigidbody rb = player.GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+        player.transform.position = new Vector3(0.0f, 4.0f, 0.0f);
+        rb.isKinematic = true;
+    }
+
+    /// <summary>
+    /// Show the mesh as visible.
+    /// </summary>
     public void Button_ViewMesh()
     {
         m_meshFromFile.GetComponent<MeshRenderer>().material = m_visibleMat;
