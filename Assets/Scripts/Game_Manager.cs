@@ -80,7 +80,7 @@ public class Game_Manager : MonoBehaviour {
 			socketToPlace = partBase.ReturnClosestDirection (hit.point);
 
 			if (socketToPlace) {
-				placedPosition - socketToPlace.position;
+				placedPosition -= socketToPlace.position;
 			}
 
 			partToPlace.transform.LookAt (partBase.rendererToFindEdges.bounds.center);
