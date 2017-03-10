@@ -58,7 +58,7 @@ public class Game_Manager : MonoBehaviour {
 			partToPlace.transform.position = placedPosition;
 
 			if (Input.GetTouch (0).phase == TouchPhase.Ended) {
-				SiegePart_base placeBase = partToPlace.GetComponent<SiegePart_base> ();
+				Connector_Logic placeBase = partToPlace.GetComponent<Connector_Logic> ();
 
 				PlayerParts.Add (partToPlace.transform);
 				partToPlace.GetComponentInChildren<Collider> ().enabled = true;
@@ -74,8 +74,8 @@ public class Game_Manager : MonoBehaviour {
 
 
 	void CheckHit(RaycastHit hit) {
-		if (hit.transform.GetComponent<SiegePart_base> ()) {
-			SiegePart_base partBase = hit.transform.GetComponent<SiegePart_base> ();
+		if (hit.transform.GetComponent<Connector_Logic> ()) {
+			Connector_Logic partBase = hit.transform.GetComponent<Connector_Logic> ();
 
 			socketToPlace = partBase.ReturnClosestDirection (hit.point);
 

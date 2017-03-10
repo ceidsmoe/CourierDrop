@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class SiegePart_base : MonoBehaviour {
+public class Connector_Logic : MonoBehaviour {
 
     public Renderer rendererToFindEdges;
 
@@ -41,7 +41,7 @@ public class SiegePart_base : MonoBehaviour {
 	    if(selectDirections.up)
         {                
            
-            Vector3 addDirection = trans.up + new Vector3(0, rendererToFindEdges.bounds.extents.y - 1, 0);
+            Vector3 addDirection = trans.position + new Vector3(0, rendererToFindEdges.bounds.extents.y, 0);
             Vector3 finalPos = trans.position + addDirection;
 
 
@@ -149,7 +149,7 @@ public class SiegePart_base : MonoBehaviour {
             disabledSockets.Add(socket);
         }
     }
-		
+
     public void AssignTargetToJoint(Transform target)
     {
             joint.connectedBody = target.GetComponent<Rigidbody>();
