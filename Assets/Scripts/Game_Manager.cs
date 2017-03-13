@@ -8,6 +8,14 @@ public class Game_Manager : MonoBehaviour {
 
     public FreeCameraLook cameraRig; //Our camera's rig
 
+    public GameObject myCar; //The parent gameobject containing all the parts
+
+    public GameObject m_builderObjectsContainer;
+
+    public GameObject m_areaDescriptionLoaderPanel;
+
+    public GameObject m_meshBuildPanel;
+
     //A list that hold every part we have attached to our Siege equipment(?)
     List<Transform> PlayerParts = new List<Transform>();
 
@@ -65,7 +73,7 @@ public class Game_Manager : MonoBehaviour {
             if (partToPlacePrefab) //but we have a prefab for it
             {
                 //instantiate the part on a position way out of sight from the camera
-                partToPlace = Instantiate(partToPlacePrefab, -Vector3.up * 2000, Quaternion.identity) as GameObject;
+                partToPlace = Instantiate(partToPlacePrefab, -Vector3.up * 2000, Quaternion.identity, myCar.transform) as GameObject;
             }
             //if we don't have a prefab, then the player is either sleeping or haven't decided what to place
         }
@@ -186,5 +194,15 @@ public class Game_Manager : MonoBehaviour {
         //Would be by using the Time.scale and changing it from 0 to 1 etc.
         //Of course for functions that are using the Time.delta time (camera scripts etc.)
         //you should do either another timer or simply avoid using the deltaTime.
+
+        m_builderObjectsContainer.gameObject.SetActive(false);
+
+        // Disable unused components in tango application.
+        /*m_tangoApplication.m_areaDescriptionLearningMode = false;
+        m_tangoApplication.m_enableDepth = false;*/
+
+        // Set UI panel to the mesh interaction panel.
+        m_areaDescriptionLoaderPanel.SetActive(true);
+        m_meshBuildPanel.SetActive(true);
     }
 }

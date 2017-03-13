@@ -43,6 +43,8 @@ public class MeshOcclusionUIController : MonoBehaviour, ITangoLifecycle, ITangoP
 
     public GameObject m_builderObjectsContainer;
 
+    public GameObject m_playerContainer;
+
     /// <summary>
     /// The canvas panel used during mesh construction.
     /// </summary>
@@ -436,6 +438,14 @@ public class MeshOcclusionUIController : MonoBehaviour, ITangoLifecycle, ITangoP
         m_meshBuildPanel.SetActive(false);
         m_meshInteractionPanel.SetActive(true);
 
+
+        // Set the player to be the car we just created
+        m_playerContainer.transform.DetachChildren();
+        Transform myCar = m_builderObjectsContainer.transform.GetChild(0);
+        myCar.SetParent(m_playerContainer.transform);
+        myCar.gameObject.SetActive(true);
+        //myCar.position = new Vector3(0.0f, 2.0f, 0.0f);
+
         // Load mesh.
         AreaDescriptionMesh mesh = _DeserializeAreaDescriptionMesh(m_savedUUID);
         if (mesh == null)
@@ -453,7 +463,7 @@ public class MeshOcclusionUIController : MonoBehaviour, ITangoLifecycle, ITangoP
         m_meshFromFile.layer = LayerMask.NameToLayer("Occlusion");
 
         Vector3 bottomPoint = mr.bounds.min;
-        m_mapObjectsContainer.gameObject.transform.GetChild(0).position = bottomPoint;
+        m_mapObjectsContainer.transform.GetChild(0).position = bottomPoint;
 
         // Load Area Description file.
         m_curAreaDescription = AreaDescription.ForUUID(m_savedUUID);
@@ -529,10 +539,7 @@ public class MeshOcclusionUIController : MonoBehaviour, ITangoLifecycle, ITangoP
     public void Button_ResetPlayer()
     {
         GameObject player = GameObject.Find("Player");
-        Rigidbody rb = player.GetComponent<Rigidbody>();
-        rb.isKinematic = false;
-        player.transform.position = new Vector3(0.0f, 4.0f, 0.0f);
-        rb.isKinematic = true;
+        player.transform.position = new Vector3(0.0f, 2.0f, 0.0f);
     }
 
     /// <summary>
