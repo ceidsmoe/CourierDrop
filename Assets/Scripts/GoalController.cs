@@ -16,6 +16,6 @@ public class GoalController : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) 
     {
-    	GameObject.Find("Player").SendMessage("Finished");
+    	GameObject.Find("PlayerContainer").SendMessage("Finished");
     }
 }
