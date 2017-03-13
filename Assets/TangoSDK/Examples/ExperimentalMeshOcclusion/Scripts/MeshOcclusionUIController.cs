@@ -438,13 +438,12 @@ public class MeshOcclusionUIController : MonoBehaviour, ITangoLifecycle, ITangoP
         m_meshBuildPanel.SetActive(false);
         m_meshInteractionPanel.SetActive(true);
 
-
         // Set the player to be the car we just created
         m_playerContainer.transform.DetachChildren();
         Transform myCar = m_builderObjectsContainer.transform.GetChild(0);
         myCar.SetParent(m_playerContainer.transform);
         myCar.gameObject.SetActive(true);
-        //myCar.position = new Vector3(0.0f, 2.0f, 0.0f);
+        //Destroy(myCar.GetChild(myCar.childCount - 1).gameObject);
 
         // Load mesh.
         AreaDescriptionMesh mesh = _DeserializeAreaDescriptionMesh(m_savedUUID);
