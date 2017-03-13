@@ -41,6 +41,8 @@ public class MeshOcclusionUIController : MonoBehaviour, ITangoLifecycle, ITangoP
 
     public GameObject m_mapObjectsContainer;
 
+    public GameObject m_builderObjectsContainer;
+
     /// <summary>
     /// The canvas panel used during mesh construction.
     /// </summary>
@@ -385,7 +387,16 @@ public class MeshOcclusionUIController : MonoBehaviour, ITangoLifecycle, ITangoP
     /// </summary>
     public void Button_CreateCarGameObject()
     {
+        // Enable objects needed to use Area Description and mesh for occlusion.
+        m_builderObjectsContainer.gameObject.SetActive(true);
 
+        // Disable unused components in tango application.
+        /*m_tangoApplication.m_areaDescriptionLearningMode = false;
+        m_tangoApplication.m_enableDepth = false;*/
+
+        // Set UI panel to the mesh interaction panel.
+        m_areaDescriptionLoaderPanel.SetActive(false);
+        m_meshBuildPanel.SetActive(false);
     }
 
     /// <summary>

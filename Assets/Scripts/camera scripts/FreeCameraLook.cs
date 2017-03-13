@@ -3,6 +3,8 @@
 
 public class FreeCameraLook : Pivot {
 
+	public VirtualJoystick joystick;
+
 	[SerializeField] private float moveSpeed = 5f;
 	[SerializeField] private float turnSpeed = 1.5f;
 	[SerializeField] private float turnsmoothing = .1f;
@@ -57,8 +59,8 @@ public class FreeCameraLook : Pivot {
 
 	void HandleRotationMovement()
 	{
-		float x = Input.GetAxis("Mouse X");
-		float y = Input.GetAxis("Mouse Y");
+		float x = joystick.Horizontal();//Input.GetAxis("Mouse X");
+		float y = joystick.Vertical();//Input.GetAxis("Mouse Y");
 
 		if (turnsmoothing > 0)
 		{
